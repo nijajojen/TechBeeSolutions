@@ -1,21 +1,28 @@
 package com.techbsolutions.string;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+/*
+ * 1. Create Vowels class in JAVA then do the following:
+- Ask User to enter a sentence 
+or create a String variable to assign a sentence to it
+- Count all the vowels in a sentence and display the count
+ */
 public class Vowels {
 
-	public static int countVowels(String sentence) {
-		
-		Set<Character> set= new HashSet<>();
+	public int countVowels(String sentence) {
+		//validating boundary conditions
+		if(sentence==null || sentence.trim().length()==0) {
+				return 0;
+			}
+			
+		Set<Character> vowelSet= new HashSet<>(Arrays.asList('A','E','I','O','U','a','e','i','o','u'));
 		int count = 0;
-		set.add('A');set.add('a');
-		set.add('E');set.add('e');
-		set.add('I');set.add('i');
-		set.add('O');set.add('o');
-		set.add('U');set.add('u');
+		
 		for(int i=0; i<sentence.length(); i++) {
-			if(set.contains(sentence.charAt(i))) {
+			if(vowelSet.contains(sentence.charAt(i))) {
 				count++;
 			}
 		}
@@ -23,7 +30,10 @@ public class Vowels {
 		
 	}
 	public static void main(String[] args) {
-		System.out.println(countVowels("How many vowels here?"));
+		Vowels objVowel= new Vowels();
+		System.out.println(objVowel.countVowels("How many vowels here?"));
+		System.out.println(objVowel.countVowels("bcd"));
+		System.out.println(objVowel.countVowels(null));
 
 	}
 

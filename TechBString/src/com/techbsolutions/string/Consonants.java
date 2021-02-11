@@ -1,26 +1,32 @@
 package com.techbsolutions.string;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
+/**
+ * 4. Create Consonants class in JAVA and then do the following:
+- Ask User to enter a sentence or create a String variable 
+to assign a sentence to it
+- Count all consonants in a String and display the count
+- Replace all consonants with '*' in a String
+ * @author nija
+ *
+ */
 public class Consonants {
 
 	private static int countConsonants(String sentence) {
-		Set<Character> set= new HashSet<Character>();
-		set.add('A');set.add('a');
-		set.add('E');set.add('e');
-		set.add('I');set.add('i');
-		set.add('O');set.add('o');
-		set.add('U');set.add('u');
+		if(sentence==null || sentence.trim().length()==0) {
+			return 0;
+		}
+		Set<Character> vowelset= new HashSet<>(Arrays.asList('A','E','I','O','U','a','e','i','o','u'));
 		
 		int count=0;
 		String newChar="*";
 		char[] charArray= sentence.toCharArray();
 		for(int i=0; i< sentence.length(); i++) {
-			if((set.contains(charArray[i])== false)&& (charArray[i]!=' ')) {
+			if(!vowelset.contains(charArray[i])&& (charArray[i]!=' ')) {
 				count++;
-				charArray[i]='*';
-				
+				charArray[i]='*';				
 			}
 		}
 		
